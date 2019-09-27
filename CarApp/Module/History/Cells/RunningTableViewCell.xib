@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="RunningTableViewCell" rowHeight="157" id="KGk-i7-Jjw" customClass="RunningTableViewCell" customModule="CarApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="151"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="384" height="150.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="980 Pontos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adJ-uV-tJc">
+                        <rect key="frame" x="275" y="65" width="95" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" red="0.015686274509803921" green="0.70196078431372544" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Voyage 1.6 Flex" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpK-An-rdM">
+                        <rect key="frame" x="36" y="93.5" width="126" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EASY Congonhas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kay-Bb-em1" userLabel="Loja">
+                        <rect key="frame" x="36" y="10" width="165" height="24"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LBP-6A-sHM">
+                        <rect key="frame" x="20" y="15" width="1" height="135.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="bjN-X0-urE"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZy-Q5-4M9">
+                        <rect key="frame" x="16.5" y="10" width="8" height="8"/>
+                        <color key="backgroundColor" red="0.015686274509803921" green="0.70196078431372544" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="Igo-Ag-r2y"/>
+                            <constraint firstAttribute="height" constant="8" id="LJ2-hw-VTq"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/08/2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KEp-gR-csW" userLabel="Data">
+                        <rect key="frame" x="36" y="65" width="90.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 630,30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNe-2P-evS" userLabel="Valor">
+                        <rect key="frame" x="36" y="122" width="86.5" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="LBP-6A-sHM" firstAttribute="top" secondItem="OZy-Q5-4M9" secondAttribute="bottom" constant="-3" id="0PE-7k-s5s"/>
+                    <constraint firstItem="KEp-gR-csW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="22p-b3-f6t"/>
+                    <constraint firstItem="OZy-Q5-4M9" firstAttribute="centerX" secondItem="LBP-6A-sHM" secondAttribute="centerX" id="3QS-xM-fNE"/>
+                    <constraint firstItem="LBP-6A-sHM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="68h-aD-fe8"/>
+                    <constraint firstItem="Kay-Bb-em1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="6ev-iQ-7kZ"/>
+                    <constraint firstAttribute="trailing" secondItem="adJ-uV-tJc" secondAttribute="trailing" constant="14" id="Dbd-SH-1l9"/>
+                    <constraint firstItem="gpK-An-rdM" firstAttribute="top" secondItem="KEp-gR-csW" secondAttribute="bottom" constant="7.5" id="G4j-pe-5u9"/>
+                    <constraint firstItem="fNe-2P-evS" firstAttribute="top" secondItem="gpK-An-rdM" secondAttribute="bottom" constant="7.5" id="TpW-yO-fLa"/>
+                    <constraint firstAttribute="trailing" secondItem="gpK-An-rdM" secondAttribute="trailing" constant="222" id="cI1-p0-HPP"/>
+                    <constraint firstItem="KEp-gR-csW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jYN-84-td9"/>
+                    <constraint firstItem="LBP-6A-sHM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="jYQ-NI-amE"/>
+                    <constraint firstAttribute="bottom" secondItem="LBP-6A-sHM" secondAttribute="bottom" id="oiw-gD-RNu"/>
+                    <constraint firstItem="gpK-An-rdM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="olr-7s-JxD"/>
+                    <constraint firstItem="adJ-uV-tJc" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ooP-aH-ghk"/>
+                    <constraint firstItem="Kay-Bb-em1" firstAttribute="top" secondItem="OZy-Q5-4M9" secondAttribute="top" id="qR1-1g-f3u"/>
+                    <constraint firstItem="fNe-2P-evS" firstAttribute="leading" secondItem="gpK-An-rdM" secondAttribute="leading" id="u1l-Qy-CQ8"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ballView" destination="OZy-Q5-4M9" id="B5H-TF-61D"/>
+                <outlet property="carro" destination="gpK-An-rdM" id="hJ9-O1-7ax"/>
+                <outlet property="data" destination="Kay-Bb-em1" id="krK-Ma-1I3"/>
+                <outlet property="loja" destination="Kay-Bb-em1" id="Xf5-3F-eBJ"/>
+                <outlet property="pontuacao" destination="adJ-uV-tJc" id="O2Q-ht-1fM"/>
+                <outlet property="valor" destination="fNe-2P-evS" id="zMi-cA-rLa"/>
+            </connections>
+            <point key="canvasLocation" x="85.507246376811594" y="121.54017857142857"/>
+        </tableViewCell>
+    </objects>
+</document>
