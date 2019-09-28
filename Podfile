@@ -9,6 +9,7 @@ target 'CarApp' do
 
   pod 'Kingfisher'
   pod 'SVProgressHUD'
+  pod 'lottie-ios'
 
   target 'CarAppTests' do
     inherit! :search_paths

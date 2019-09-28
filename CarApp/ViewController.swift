@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import Lottie
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var animationView: AnimationView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let navigation = UINavigationController(rootViewController: LoginViewController())
+        self.animationView.play()
+        self.navigationController?.navigationBar.isHidden = true
+        let deadlineTime = DispatchTime.now() + .seconds(3)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime) {
+            let navigation = UINavigationController(rootViewController: LoginViewController())
+            self.present(navigation, animated: true, completion: nil)
+        }
         
-        
-        
-        self.present(navigation, animated: true, completion: nil)
     }
 
 

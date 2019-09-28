@@ -10,6 +10,29 @@ import UIKit
 import Kingfisher
 import SVProgressHUD
 
+extension UIColor {
+    convenience init?(hexString: String) {
+        var chars = Array(hexString.hasPrefix("#") ? hexString.dropFirst() : hexString[...])
+        let red, green, blue, alpha: CGFloat
+        switch chars.count {
+        case 3:
+            chars = chars.flatMap { [$0, $0] }
+            fallthrough
+        case 6:
+            chars = ["F","F"] + chars
+            fallthrough
+        case 8:
+            alpha = CGFloat(strtoul(String(chars[0...1]), nil, 16)) / 255
+            red   = CGFloat(strtoul(String(chars[2...3]), nil, 16)) / 255
+            green = CGFloat(strtoul(String(chars[4...5]), nil, 16)) / 255
+            blue  = CGFloat(strtoul(String(chars[6...7]), nil, 16)) / 255
+        default:
+            return nil
+        }
+        self.init(red: red, green: green, blue:  blue, alpha: alpha)
+    }
+}
+
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -18,9 +41,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var titleUser: UILabel!
     @IBOutlet weak var progressScore: UILabel!
     @IBOutlet weak var modelCar: UILabel!
-    @IBOutlet weak var scanQRButton: UIButton!
     @IBOutlet weak var globalScoreView: UIView!
     @IBOutlet weak var progressScoreView: UIView!
+    @IBOutlet weak var historyButton: CustomRoundedButton!
+    @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
     
     var arrayHistory: [HistoryModel] = []
     
@@ -41,23 +65,71 @@ class ProfileViewController: UIViewController {
         setupUI()
         title = ""
         
+        SVProgressHUD.setDefaultAnimationType(.flat)
+        SVProgressHUD.setDefaultStyle(.dark)
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show()
+        
         self.profileName.text = user?.name
         if let urlString = user?.imageUrl, let url = URL(string: urlString){
             self.profileImage.kf.setImage(with: url)
         }
         
-        getHistory(status: 2, UserId: user!.id, success: { (data) in
+        guard let user = self.user else { return }
+        getHistory(complete: true, status: nil, userId: user.id, success: { (data) in
             self.arrayHistory = data.history
-            self.progressScore.text = "\(self.arrayHistory.first?.actualScore ?? 0)"
+//            guard let history = self.arrayHistory.first else {
+//                self.progressScoreView.isHidden = true
+//                self.historyButton.isHidden = true
+//                self.stackViewHeight.constant = 100
+//                return
+//            }`
+            let corridaEmProgresso = self.arrayHistory.first { $0.status == 1 }
+            let corridasFinalidas = self.arrayHistory
+                //.filter { $0.status == 2}
             
+            if corridasFinalidas.count == 0 {
+                self.historyButton.isHidden = true
+            } else {
+                let pontuacaoGlobal = (corridasFinalidas.reduce(0, {$0 + $1.actualScore}) / corridasFinalidas.count)
+                self.globalScore.text = "\(pontuacaoGlobal)"
+                if pontuacaoGlobal >= 950 {
+                    self.titleUser.text = "Herói do asfalto!"
+                } else if pontuacaoGlobal >= 900 && pontuacaoGlobal < 950 {
+                    self.titleUser.text = "Prodígio do volante!"
+                } else if pontuacaoGlobal >= 500 && pontuacaoGlobal < 850 {
+                    self.titleUser.text = "Cangaceiro do tráfego"
+                    //self.titleUser.textColor = UIColor(hexString: "#b4180d")
+                    //self.titleUser.textColor = UIColor(named: "#b4180d")
+                    self.globalScore.textColor = UIColor(hexString: "#b4180d")
+                } else if pontuacaoGlobal > 0 && pontuacaoGlobal < 500 {
+                    self.titleUser.text = "À espera de um milagre"
+                    //self.titleUser.textColor = UIColor(hexString: "#b4180d")
+                    //self.titleUser.textColor = UIColor(named: "#b4180d")
+                    self.globalScore.textColor = UIColor(hexString: "#b4180d")
+                }
+            }
+//            let total = pontuacaoGlobal.reduce(0, {$0 + $1.actualScore})
+            guard let corridaEmProgresso1 = corridaEmProgresso else{
+                self.progressScoreView.isHidden = true
+                self.stackViewHeight.constant = 200
+                self.globalScore.text = "Você não possui nenhuma corrida"
+                self.globalScore.font = UIFont.systemFont(ofSize: 17)
+                self.globalScore.textColor = .white
+                SVProgressHUD.dismiss()
+                return
+            }
+            self.progressScore.text = "\(corridaEmProgresso1.actualScore)"
+            if corridaEmProgresso1.actualScore < 850 {
+                self.progressScore.textColor = UIColor(hexString: "#b4180d")
+            }
+            self.modelCar.text = corridaEmProgresso1.model
+            //self.modelCar.text = self.arrayHistory.first?.model ?? ""
+            SVProgressHUD.dismiss()
         }, failure: { (error) in
             print("Deu Ruim")
+            SVProgressHUD.dismiss()
         })
-        
-//        SVProgressHUD.setDefaultAnimationType(.flat)
-//        SVProgressHUD.setDefaultStyle(.dark)
-//        SVProgressHUD.setDefaultMaskType(.black)
-//        SVProgressHUD.show()
         
 //        getUser(success: { (data) in
 //            self.profileName.text = data.users.first?.name
@@ -116,11 +188,15 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    func getHistory(status: Int, UserId: String, success: @escaping (_ history: DataHistoryModel) ->Void, failure: @escaping (_ error: NetworkingError) -> Void) {
+    func getHistory(complete: Bool, status: Int?, userId: String, success: @escaping (_ history: DataHistoryModel) ->Void, failure: @escaping (_ error: NetworkingError) -> Void) {
         let networking = Networking()
         
         let request = AbstractRequest()
-        request.url = String.init(format: EndPoints.getHistoryService, "\(status)", "\(UserId)")
+        if complete{
+            request.url = String.init(format: EndPoints.getCompleteHistoryServiceFromUser, "\(userId)")
+        } else {
+            request.url = String.init(format: EndPoints.getHistoryService, "\(status ?? 0)", "\(userId)")
+        }
         
         networking.doGet(requestObject: request, success: { (data: DataHistoryModel?) in
             guard let data = data else {
@@ -134,7 +210,23 @@ class ProfileViewController: UIViewController {
         })
     }
 
-    
+//    func getCompleteHistoryFromUser(UserId: String, success: @escaping (_ history: DataHistoryModel) ->Void, failure: @escaping (_ error: NetworkingError) -> Void) {
+//        let networking = Networking()
+//
+//        let request = AbstractRequest()
+//        request.url = String.init(format: EndPoints.getCompleteHistoryServiceFromUser, "\(UserId)")
+//
+//        networking.doGet(requestObject: request, success: { (data: DataHistoryModel?) in
+//            guard let data = data else {
+//                failure(NetworkingError.init(errorType: .unknownError))
+//                return
+//            }
+//
+//            success(data)
+//        }, failure:{(error) in
+//            failure(NetworkingError.init(errorType: .unknownError))
+//        })
+//    }
 }
 
 class CustomRoundedButton: UIButton {

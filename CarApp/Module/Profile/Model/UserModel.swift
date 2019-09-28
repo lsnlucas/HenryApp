@@ -48,8 +48,8 @@ struct HistoryModel: Codable {
     let vin: String
     let startDate: String
     let endDate: String
-    let startPrice: Float
-    //let infractions: String
+    let startPrice: Double
+    let infractions: [Infractions]
     //let v: String
     
     init(from decoder: Decoder) throws {
@@ -67,8 +67,8 @@ struct HistoryModel: Codable {
         vin = try container.decode(String.self, forKey: .vin)
         startDate = try container.decode(String.self, forKey: .startDate)
         endDate = try container.decode(String.self, forKey: .endDate)
-        startPrice = try container.decode(Float.self, forKey: .startPrice)
-        //infractions = try container.decode(String.self, forKey: .infractions)
+        startPrice = try container.decode(Double.self, forKey: .startPrice)
+        infractions = try container.decode([Infractions].self, forKey: .infractions)
         //v = try container.decode(String.self, forKey: .v)
     }
     
@@ -106,7 +106,7 @@ struct HistoryModel: Codable {
         try container.encode(startDate, forKey: .startDate)
         try container.encode(endDate, forKey: .endDate)
         try container.encode(startPrice, forKey: .startPrice)
-        //try container.encode(infractions, forKey: .infractions)
+        try container.encode(infractions, forKey: .infractions)
         //try container.encode(v, forKey: .v)
     }
 }
@@ -173,5 +173,31 @@ struct StoreModel: Codable{
         try container.encode(name, forKey: .name)
         try container.encode(group, forKey: .group)
         try container.encode(cnpj, forKey: .cnpj)
+    }
+}
+
+struct Infractions: Codable{
+    let id: String
+    let title: String
+    let scoreLost: Int
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        title = try container.decode(String.self, forKey: .title)
+        scoreLost = try container.decode(Int.self, forKey: .scoreLost)
+    }
+    
+    enum CodingKeys: String, CodingKey{
+        case id = "_id"
+        case title = "title"
+        case scoreLost = "scoreLost"
+    }
+    
+    func encode(to encoder: Encoder) throws{
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(scoreLost, forKey: .scoreLost)
     }
 }

@@ -45,7 +45,7 @@ class RunningTableViewCell: UITableViewCell {
         }
         data.text = texto
         loja.text = history.store.name
-        valor.text = "\(history.startPrice)"
+        valor.text = "\(history.startPrice.currencyFormat())"
     }
     
 }

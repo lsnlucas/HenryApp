@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D04BCD9233DAB3C0023BB36 /* String+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D04BCD8233DAB3C0023BB36 /* String+Currency.swift */; };
+		1D04BCDC233DCAC90023BB36 /* carAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D04BCDB233DCAC90023BB36 /* carAnimation.json */; };
+		1D04BCDE233DD0790023BB36 /* carAnimation2.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D04BCDD233DD0790023BB36 /* carAnimation2.json */; };
 		52225749231ECE100010616F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52225748231ECE100010616F /* AppDelegate.swift */; };
 		5222574B231ECE100010616F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5222574A231ECE100010616F /* ViewController.swift */; };
 		5222574E231ECE100010616F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5222574C231ECE100010616F /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 
 /* Begin PBXFileReference section */
 		14DA8A9F93C63259EFAF8D00 /* Pods_CarAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D04BCD8233DAB3C0023BB36 /* String+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Currency.swift"; sourceTree = "<group>"; };
+		1D04BCDB233DCAC90023BB36 /* carAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = carAnimation.json; path = ../../../../../Downloads/carAnimation.json; sourceTree = "<group>"; };
+		1D04BCDD233DD0790023BB36 /* carAnimation2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = carAnimation2.json; path = ../../../../../Downloads/carAnimation2.json; sourceTree = "<group>"; };
 		473396DDBD2A81E8D6E07288 /* Pods_CarAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CarAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52225745231ECE100010616F /* CarApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52225748231ECE100010616F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +129,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D04BCD7233DAAFA0023BB36 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1D04BCD8233DAB3C0023BB36 /* String+Currency.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1D04BCDA233DCAB20023BB36 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				1D04BCDB233DCAC90023BB36 /* carAnimation.json */,
+				1D04BCDD233DD0790023BB36 /* carAnimation2.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		5222573C231ECE100010616F = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +171,8 @@
 		52225747231ECE100010616F /* CarApp */ = {
 			isa = PBXGroup;
 			children = (
+				1D04BCDA233DCAB20023BB36 /* Animations */,
+				1D04BCD7233DAAFA0023BB36 /* Extensions */,
 				B339C3182320A8D900038D9C /* API */,
 				5247DDF423206D9100501E4E /* Custom */,
 				52225776231ECE470010616F /* Module */,
@@ -431,6 +456,8 @@
 				A014B0712335E98A00C7FDBB /* UserTableViewCell.xib in Resources */,
 				52225753231ECE110010616F /* LaunchScreen.storyboard in Resources */,
 				52225750231ECE110010616F /* Assets.xcassets in Resources */,
+				1D04BCDE233DD0790023BB36 /* carAnimation2.json in Resources */,
+				1D04BCDC233DCAC90023BB36 /* carAnimation.json in Resources */,
 				5222577D231ECE8E0010616F /* ProfileViewController.xib in Resources */,
 				5247DDEC2320658900501E4E /* HistoryViewController.xib in Resources */,
 				A0107B992339386700E5B62E /* RunningTableViewCell.xib in Resources */,
@@ -549,6 +576,7 @@
 				5222577C231ECE8E0010616F /* ProfileViewController.swift in Sources */,
 				5222574B231ECE100010616F /* ViewController.swift in Sources */,
 				A014B0702335E98A00C7FDBB /* UserTableViewCell.swift in Sources */,
+				1D04BCD9233DAB3C0023BB36 /* String+Currency.swift in Sources */,
 				5247DDF623206DAF00501E4E /* GradientView.swift in Sources */,
 				52225749231ECE100010616F /* AppDelegate.swift in Sources */,
 				B339C3222320AACC00038D9C /* NetworkingError.swift in Sources */,
